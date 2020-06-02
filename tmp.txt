@@ -1,0 +1,120 @@
+[
+    {
+        "ID": "ekd9f5w1u97k8jld5l9fjhasc",
+        "Version": {
+            "Index": 44
+        },
+        "CreatedAt": "2020-06-02T16:48:18.440255071Z",
+        "UpdatedAt": "2020-06-02T16:48:18.443112729Z",
+        "Spec": {
+            "Name": "sample-stack_whoami",
+            "Labels": {
+                "app": "sample-app",
+                "com.docker.stack.image": "training/whoami:latest",
+                "com.docker.stack.namespace": "sample-stack",
+                "environment": "prod-south"
+            },
+            "TaskTemplate": {
+                "ContainerSpec": {
+                    "Image": "training/whoami:latest@sha256:4d54f5ea6d2c562ae96add2792e8d71a56b7613cbc4e7b8e20a4e4d3085bbaff",
+                    "Labels": {
+                        "com.docker.stack.namespace": "sample-stack"
+                    },
+                    "Privileges": {
+                        "CredentialSpec": null,
+                        "SELinuxContext": null
+                    },
+                    "StopGracePeriod": 10000000000,
+                    "DNSConfig": {},
+                    "Isolation": "default"
+                },
+                "Resources": {},
+                "RestartPolicy": {
+                    "Condition": "any",
+                    "Delay": 5000000000,
+                    "MaxAttempts": 0
+                },
+                "Placement": {
+                    "Platforms": [
+                        {
+                            "Architecture": "amd64",
+                            "OS": "linux"
+                        }
+                    ]
+                },
+                "Networks": [
+                    {
+                        "Target": "i8of3zzk3il9n4f2962hfc7kx",
+                        "Aliases": [
+                            "whoami"
+                        ]
+                    }
+                ],
+                "ForceUpdate": 0,
+                "Runtime": "container"
+            },
+            "Mode": {
+                "Replicated": {
+                    "Replicas": 6
+                }
+            },
+            "UpdateConfig": {
+                "Parallelism": 2,
+                "Delay": 10000000000,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "RollbackConfig": {
+                "Parallelism": 1,
+                "FailureAction": "pause",
+                "Monitor": 5000000000,
+                "MaxFailureRatio": 0,
+                "Order": "stop-first"
+            },
+            "EndpointSpec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 8000,
+                        "PublishedPort": 81,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            }
+        },
+        "Endpoint": {
+            "Spec": {
+                "Mode": "vip",
+                "Ports": [
+                    {
+                        "Protocol": "tcp",
+                        "TargetPort": 8000,
+                        "PublishedPort": 81,
+                        "PublishMode": "ingress"
+                    }
+                ]
+            },
+            "Ports": [
+                {
+                    "Protocol": "tcp",
+                    "TargetPort": 8000,
+                    "PublishedPort": 81,
+                    "PublishMode": "ingress"
+                }
+            ],
+            "VirtualIPs": [
+                {
+                    "NetworkID": "wir7xiq2v638zo94bje0ktdik",
+                    "Addr": "10.0.0.7/24"
+                },
+                {
+                    "NetworkID": "i8of3zzk3il9n4f2962hfc7kx",
+                    "Addr": "10.0.1.2/24"
+                }
+            ]
+        }
+    }
+]
